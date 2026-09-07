@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const stats = [
@@ -14,15 +15,39 @@ export function Hero() {
       id="home"
       className="relative overflow-hidden border-b border-zinc-800 bg-zinc-950"
     >
-      {/* subtle grid */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+      {/* Dramatic background image - high-contrast athlete in moody gym */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, black 65%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 65%, transparent 100%)",
+        }}
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=2000&q=80"
+          alt="Athlete performing heavy barbell deadlift in moody gym with chiaroscuro lighting"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/70" />
+        {/* additional gradient depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-zinc-950/60 to-zinc-950" />
+      </div>
+
+      {/* subtle grid + radial glow overlay (above image, below content) */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
         {/* radial gradient glow behind headline for atmospheric depth */}
         <div className="absolute left-1/2 top-[22%] h-[720px] w-[1100px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-lime-500/10 via-zinc-950 to-zinc-950 blur-[1px] opacity-90" />
         <div className="absolute left-1/2 top-[-10%] h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-lime-400/10 blur-[120px]" />
       </div>
 
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
         <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-xs font-medium tracking-wide text-zinc-400">
           <span className="inline-flex h-2 w-2 rounded-full bg-lime-400 animate-pulse" />
           PREMIUM 24/7 FITNESS • NOW OPEN

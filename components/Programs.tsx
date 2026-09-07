@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Dumbbell,
   Flame,
@@ -15,6 +16,8 @@ type Program = {
   intensity: string;
   duration: string;
   icon: React.ElementType;
+  image: string;
+  alt: string;
 };
 
 const programs: Program[] = [
@@ -25,6 +28,9 @@ const programs: Program[] = [
     intensity: "High",
     duration: "60 mins",
     icon: Dumbbell,
+    image:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
+    alt: "Close-up of barbell rack knurling and weight plates",
   },
   {
     title: "HIIT & Conditioning",
@@ -33,6 +39,9 @@ const programs: Program[] = [
     intensity: "Extreme",
     duration: "45 mins",
     icon: Flame,
+    image:
+      "https://images.unsplash.com/photo-1552674605-db6ffd995fac?auto=format&fit=crop&w=800&q=80",
+    alt: "Focused eye of a sprinter mid-race",
   },
   {
     title: "Functional Athleticism",
@@ -41,6 +50,9 @@ const programs: Program[] = [
     intensity: "Medium-High",
     duration: "50 mins",
     icon: Activity,
+    image:
+      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80",
+    alt: "Hand gripping a kettlebell in gym",
   },
   {
     title: "Active Recovery & Mobility",
@@ -49,6 +61,9 @@ const programs: Program[] = [
     intensity: "Low",
     duration: "30 mins",
     icon: HeartPulse,
+    image:
+      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80",
+    alt: "Close-up texture of a foam roller",
   },
 ];
 
@@ -90,42 +105,60 @@ export function Programs() {
           {programs.map((program) => (
             <div
               key={program.title}
-              className="group flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition-all hover:-translate-y-1 hover:border-lime-400/50 hover:shadow-lg hover:shadow-lime-400/5"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition-all hover:-translate-y-1 hover:border-lime-400/50 hover:shadow-lg hover:shadow-lime-400/5"
             >
-              {/* Icon */}
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950 text-lime-400 transition-colors group-hover:border-lime-400/30">
-                <program.icon className="h-5 w-5" />
+              {/* Image accent - blurred snippet with monochromatic dark filter + lime overlay */}
+              <div className="relative h-32 w-full overflow-hidden">
+                <Image
+                  src={program.image}
+                  alt={program.alt}
+                  fill
+                  className="object-cover opacity-60 grayscale contrast-125 brightness-[0.7] blur-[0.5px] transition-all duration-500 group-hover:scale-105 group-hover:opacity-70"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                {/* lime-green accent overlay with multiply blend */}
+                <div className="absolute inset-0 bg-lime-400/20 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-zinc-950/30 mix-blend-multiply" />
+                {/* gradient fade to card body */}
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent" />
+
+                {/* Icon integrated over image */}
+                <div className="absolute bottom-3 left-4 flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-700/50 bg-zinc-900/80 backdrop-blur text-lime-400 shadow-lg transition-colors group-hover:border-lime-400/30">
+                  <program.icon className="h-5 w-5" />
+                </div>
               </div>
 
-              <h3 className="mt-5 text-base font-bold tracking-tight text-zinc-100">
-                {program.title}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-6 text-zinc-400">
-                {program.description}
-              </p>
+              <div className="flex flex-1 flex-col p-6 pt-5">
+                <h3 className="text-base font-bold tracking-tight text-zinc-100">
+                  {program.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-6 text-zinc-400">
+                  {program.description}
+                </p>
 
-              {/* Badges */}
-              <div className="mt-5 flex flex-wrap items-center gap-2">
-                <span
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold ${intensityStyles(
-                    program.intensity
-                  )}`}
+                {/* Badges */}
+                <div className="mt-5 flex flex-wrap items-center gap-2">
+                  <span
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold ${intensityStyles(
+                      program.intensity
+                    )}`}
+                  >
+                    <Gauge className="h-3 w-3" />
+                    {program.intensity}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-950 px-2.5 py-1 text-xs font-medium text-zinc-400">
+                    <Clock className="h-3 w-3" />
+                    {program.duration}
+                  </span>
+                </div>
+
+                <Link
+                  href="#"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-lime-400 transition-colors hover:text-lime-300"
                 >
-                  <Gauge className="h-3 w-3" />
-                  {program.intensity}
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-950 px-2.5 py-1 text-xs font-medium text-zinc-400">
-                  <Clock className="h-3 w-3" />
-                  {program.duration}
-                </span>
+                  Explore Program <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
               </div>
-
-              <Link
-                href="#"
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-lime-400 transition-colors hover:text-lime-300"
-              >
-                Explore Program <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
             </div>
           ))}
         </div>
