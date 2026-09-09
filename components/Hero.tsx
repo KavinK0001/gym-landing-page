@@ -55,12 +55,12 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col items-start gap-4 sm:flex-row">
-          <button
-            type="button"
+          <Link
+            href="/day-pass"
             className="inline-flex items-center gap-2 rounded-full bg-lime-400 px-7 py-3.5 text-sm font-bold tracking-wide text-black transition-colors hover:bg-lime-500"
           >
             Claim Free Day Pass <ArrowRight className="h-4 w-4" />
-          </button>
+          </Link>
           <Link
             href="#classes"
             className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-7 py-3.5 text-sm font-semibold text-zinc-100 hover:bg-zinc-800"

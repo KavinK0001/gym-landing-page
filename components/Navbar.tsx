@@ -44,12 +44,12 @@ export function Navbar() {
 
         {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
-          <button
-            type="button"
+          <Link
+            href="/day-pass"
             className="hidden rounded-full bg-lime-400 px-5 py-2.5 text-sm font-bold tracking-wide text-black transition-colors hover:bg-lime-500 md:inline-flex"
           >
             Free Day Pass
-          </button>
+          </Link>
 
           <button
             type="button"
@@ -77,13 +77,13 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <button
-              type="button"
+            <Link
+              href="/day-pass"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-lime-400 px-5 py-3 text-sm font-bold text-black hover:bg-lime-500"
             >
               Free Day Pass
-            </button>
+            </Link>
           </nav>
         </div>
       )}
