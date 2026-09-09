@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { DayPassModal } from "@/components/DayPassModal";
 
 const stats = [
   { value: "2,500+", label: "Active Members" },
@@ -10,6 +14,8 @@ const stats = [
 ];
 
 export function Hero() {
+  const [isPassModalOpen, setIsPassModalOpen] = useState(false);
+
   return (
     <section
       id="home"
@@ -55,12 +61,13 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <Link
-            href="#free-pass"
+          <button
+            type="button"
+            onClick={() => setIsPassModalOpen(true)}
             className="inline-flex items-center gap-2 rounded-full bg-lime-400 px-7 py-3.5 text-sm font-bold tracking-wide text-black transition-colors hover:bg-lime-500"
           >
             Claim Free Day Pass <ArrowRight className="h-4 w-4" />
-          </Link>
+          </button>
           <Link
             href="#classes"
             className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-7 py-3.5 text-sm font-semibold text-zinc-100 hover:bg-zinc-800"
@@ -92,6 +99,10 @@ export function Hero() {
           ))}
         </div>
       </div>
+      <DayPassModal
+        isOpen={isPassModalOpen}
+        onClose={() => setIsPassModalOpen(false)}
+      />
     </section>
   );
 }
