@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Zap } from "lucide-react";
+import { DayPassModal } from "@/components/DayPassModal";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -14,6 +15,7 @@ const navLinks = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [passOpen, setPassOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
@@ -44,12 +46,13 @@ export function Navbar() {
 
         {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
-          <Link
-            href="#free-pass"
+          <button
+            type="button"
+            onClick={() => setPassOpen(true)}
             className="hidden rounded-full bg-lime-400 px-5 py-2.5 text-sm font-bold tracking-wide text-black transition-colors hover:bg-lime-500 md:inline-flex"
           >
             Free Day Pass
-          </Link>
+          </button>
 
           <button
             type="button"
@@ -77,16 +80,20 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="#free-pass"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setPassOpen(true);
+              }}
               className="mt-2 inline-flex justify-center rounded-full bg-lime-400 px-5 py-3 text-sm font-bold text-black hover:bg-lime-500"
             >
               Free Day Pass
-            </Link>
+            </button>
           </nav>
         </div>
       )}
+      <DayPassModal open={passOpen} onClose={() => setPassOpen(false)} />
     </header>
   );
 }
