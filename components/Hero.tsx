@@ -36,14 +36,14 @@ export function Hero() {
       {/* glowing lime-green radial accent blur behind headline */}
       <div className="pointer-events-none absolute left-1/2 top-[28%] h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime-500/15 blur-3xl" />
 
-      {/* 3. Content Layering — relative z-10 above all background */}
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+      {/* 3. Content Layering — relative z-10 above all background, left-aligned */}
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-start gap-8 px-4 py-20 text-left sm:px-6 lg:px-8 lg:py-28">
         <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-xs font-medium tracking-wide text-zinc-400">
           <span className="inline-flex h-2 w-2 rounded-full bg-lime-400 animate-pulse" />
           PREMIUM 24/7 FITNESS • NOW OPEN
         </div>
 
-        <h1 className="max-w-3xl text-4xl font-black tracking-tighter text-zinc-100 sm:text-5xl lg:text-6xl">
+        <h1 className="max-w-2xl text-4xl font-black tracking-tighter text-zinc-100 sm:text-5xl lg:text-6xl">
           UNLEASH YOUR{" "}
           <span className="text-lime-400">POTENTIAL</span> AT PULSE
         </h1>
@@ -54,7 +54,7 @@ export function Hero() {
           rep.
         </p>
 
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <div className="flex flex-col items-start gap-4 sm:flex-row">
           <button
             type="button"
             className="inline-flex items-center gap-2 rounded-full bg-lime-400 px-7 py-3.5 text-sm font-bold tracking-wide text-black transition-colors hover:bg-lime-500"
