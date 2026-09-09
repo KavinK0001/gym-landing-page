@@ -245,7 +245,7 @@ export function Pricing() {
         {/* Footer note */}
         <p className="mt-10 text-center text-sm text-zinc-500">
           Need custom corporate or team rates?{" "}
-          <Link href="#contact" className="font-semibold text-lime-400 hover:text-lime-300">
+          <Link href="/contact" className="font-semibold text-lime-400 hover:text-lime-300">
             Contact us
           </Link>{" "}
           for group packages.

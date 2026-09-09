@@ -5,11 +5,11 @@ import { useState } from "react";
 import { Menu, X, Zap } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Trainers", href: "#trainers" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Schedule", href: "#schedule" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Trainers", href: "/trainers" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Schedule", href: "/schedule" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
