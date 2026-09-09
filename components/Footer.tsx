@@ -96,32 +96,32 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
-                <Link href="#home" className="hover:text-zinc-100">
+                <Link href="/" className="hover:text-zinc-100">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#classes" className="hover:text-zinc-100">
+                <Link href="/#classes" className="hover:text-zinc-100">
                   Classes
                 </Link>
               </li>
               <li>
-                <Link href="#trainers" className="hover:text-zinc-100">
+                <Link href="/trainers" className="hover:text-zinc-100">
                   Trainers
                 </Link>
               </li>
               <li>
-                <Link href="#pricing" className="hover:text-zinc-100">
+                <Link href="/pricing" className="hover:text-zinc-100">
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="#schedule" className="hover:text-zinc-100">
+                <Link href="/schedule" className="hover:text-zinc-100">
                   Schedule
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-zinc-100">
+                <Link href="/contact" className="hover:text-zinc-100">
                   Contact
                 </Link>
               </li>
