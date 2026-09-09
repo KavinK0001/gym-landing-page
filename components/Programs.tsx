@@ -40,8 +40,8 @@ const programs: Program[] = [
     duration: "45 mins",
     icon: Flame,
     image:
-      "https://images.unsplash.com/photo-1552674605-db6ffd995fac?auto=format&fit=crop&w=800&q=80",
-    alt: "Focused eye of a sprinter mid-race",
+      "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=1000&auto=format&fit=crop",
+    alt: "High-intensity interval training athlete in motion",
   },
   {
     title: "Functional Athleticism",
@@ -113,6 +113,7 @@ export function Programs() {
                   src={program.image}
                   alt={program.alt}
                   fill
+                  unoptimized
                   className="object-cover opacity-60 grayscale contrast-125 brightness-[0.7] blur-[0.5px] transition-all duration-500 group-hover:scale-105 group-hover:opacity-70"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
